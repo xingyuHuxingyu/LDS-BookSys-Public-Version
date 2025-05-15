@@ -1,0 +1,460 @@
+body {
+    text-align: center;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/*head*/
+#prompt{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 8px;
+}
+
+#prompt h3 {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+#calendar-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 8px;
+}
+
+#rules>ul {
+    margin-top: 8px;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+.head-wrapper>h3 {
+    margin-bottom: 0;
+}
+
+.head-comment {
+    color: rgb(117, 117, 117);
+}
+
+.head-wrapper {
+    margin-bottom: 18px;
+}
+
+#illegal-users {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 8px;
+}
+
+.user {
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: rgba(220, 220, 220, 0.50);
+    font-weight: 700;
+    height: 1.5em;
+    line-height: 1.5em;
+}
+
+.user .user-memory {
+    font-size: 0.5em;
+    font-weight: 400;
+}
+
+/* Tooltip text */
+.tooltip {
+    opacity: 0;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.601);
+    color: #fff;
+    text-align: center;
+    padding: 0 8px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    font-weight: 400;
+    max-width: 60em;
+    font-size: 0.8em;
+    overflow: visible;
+    margin: 0 8px;
+    transition: all 0.3s ease;
+}
+
+.user:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.illegal-user {
+    color: white;
+    background-color: rgb(245, 132, 3, 0.75);
+}
+
+.booked-user {
+    color: rgb(100, 100, 100);
+    background-color: rgb(230, 230, 230, 0.50);
+}
+
+#error-legends {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 16px;
+    row-gap: 8px;
+}
+
+/*Update 2022.1.6 Illegal Checking*/
+div.error_legend {
+    width: 1em;
+    height: 1em;
+    margin: 0 0.6em 0 0.6em;
+    display: inline-block;
+}
+
+div.error_legend.illegal_booking{
+    background-color: orangered;
+}
+
+span.illegal_booking{
+    color: orangered;
+}
+
+div.error_legend.illegal_maxgpu{
+    background-color: #13a222;
+}
+
+span.illegal_maxgpu{
+    color: #13a222;
+}
+
+div.error_legend.illegal_maxday {
+    background-color:#0066CC;
+}
+
+span.illegal_maxday {
+    color:#0066CC;
+}
+
+.legend_line {
+    vertical-align:middle;
+    display: inline-block;
+}
+
+#display-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+/*spacing*/
+.node-info {
+    display: flex;
+    column-gap: 16px;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.node-line {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    width: min(90%, 80em);
+}
+
+.node-name {
+    font-size: 1.25em;
+    line-height: 1.5em;
+    font-weight: 700;
+    padding: 0 8px;
+    width: 110px;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.node-info[data-status="true"]>.node-name,
+#prompt .node-name {
+    color: rgb(5, 101, 0);
+    background-color: rgb(202, 244, 203);
+}
+
+#prompt .node-name {
+    font-size: 1em;
+}
+
+.node-info[data-status="false"]>.node-name {
+    color: rgb(255, 255, 255);
+    background-color: brown;
+}
+
+.node-version {
+    text-wrap: nowrap;
+}
+
+table.gpu-list {
+    border-collapse: collapse;
+    width: 100%;
+    white-space: nowrap;
+    position: relative;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+table.gpu-list th,
+table.gpu-list td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+table.gpu-list th {
+    background-color: #f2f2f2;
+    flex-wrap: nowrap;
+}
+
+th.gpu, td.gpu {
+    width: 1.5em;
+    text-align: center;
+}
+
+th.memory, td.memory {
+    width: 8em;
+    text-align: center;
+    transition: all 0.3s;
+}
+
+th.usage, td.usage {
+    width: 2em;
+    text-align: right;
+    transition: all 0.3s;
+    text-wrap: nowrap;
+}
+
+th.users, td.users, .schedule-date {
+    width: 8em;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+td.schedule-date {
+    width: 8em;
+    cursor: pointer;
+}
+
+.users-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.control {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+/* From Uiverse.io by vinodjangid07 */
+.refresh-button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 2em;
+    height: 2em;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: #ff7b00;
+}
+
+.refresh-button .sign {
+    aspect-ratio: 1/1;
+}
+
+.refresh-button .sign>svg {
+    width: 1.6em;
+    height: 1.6em;
+    transform: translate(-0.30em, 0.05em);
+    aspect-ratio: 1/1;
+}
+
+.refresh-button .sign>svg path {
+    fill: white;
+}
+
+/* text */
+.refresh-button .text {
+    position: absolute;
+    text-wrap: nowrap;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-weight: 600;
+    transition-duration: .3s;
+}
+
+/* hover effect on button width */
+.refresh-button:hover {
+    width: 9em;
+    border-radius: 2em;
+    transition-duration: .3s;
+}
+
+/* .refresh-button:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+} */
+
+/* hover effect button's text */
+.refresh-button:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+}
+
+/* button click effect*/
+.refresh-button:active {
+    transform: translate(2px, 2px);
+}
+
+/* From Uiverse.io by Bodyhc */
+.auto-refresh .switch {
+    display: none;
+}
+
+.auto-refresh .switch+label {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #565656;
+    cursor: pointer;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 15px;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.auto-refresh .switch+label::before,
+.auto-refresh .switch+label::after {
+    content: '';
+    display: block;
+}
+
+.auto-refresh .switch+label::before {
+    background-color: #05012c;
+    border-radius: 500px;
+    height: 15px;
+    margin-right: 8px;
+    -webkit-transition: background-color 0.125s ease-out;
+    transition: background-color 0.125s ease-out;
+    width: 25px;
+}
+
+.auto-refresh .switch+label::after {
+    background-color: #fff;
+    border-radius: 13px;
+    box-shadow: 0 3px 1px 0 rgba(37, 34, 71, 0.05), 0 2px 2px 0 rgba(37, 34, 71, 0.1), 0 3px 3px 0 rgba(37, 34, 71, 0.05);
+    height: 13px;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+    -webkit-transition: -webkit-transform 0.125s ease-out;
+    transition: -webkit-transform 0.125s ease-out;
+    transition: transform 0.125s ease-out, -webkit-transform 0.125s ease-out;
+    width: 13px;
+}
+
+.auto-refresh .switch+label .text {
+    display: block;
+    margin-right: .3em;
+}
+
+.auto-refresh .switch+label .toggletext {
+    display: block;
+    font-weight: bold;
+    height: 15px;
+    overflow: hidden;
+    position: relative;
+    width: 25px;
+}
+
+.auto-refresh .switch+label .unchecked,
+.auto-refresh .switch+label .checked {
+    left: 0;
+    position: absolute;
+    top: 0;
+    -webkit-transition: opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;
+    transition: transform 0.125s ease-out, opacity 0.125s ease-out, -webkit-transform 0.125s ease-out;
+}
+
+.auto-refresh .switch+label .unchecked {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+}
+
+.auto-refresh .switch+label .checked {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+}
+
+.auto-refresh .switch:checked+label::before {
+    background-color: #ff7b00;
+}
+
+.auto-refresh .switch:checked+label::after {
+    -webkit-transform: translate3d(10px, 0, 0);
+    transform: translate3d(10px, 0, 0);
+}
+
+.auto-refresh .switch:checked+label .unchecked {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+}
+
+.auto-refresh .switch:checked+label .checked {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+}
