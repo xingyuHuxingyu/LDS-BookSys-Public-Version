@@ -1,5 +1,5 @@
 # GPU-Book-Monitor-LDS
-This is a public version of LDS GPU Booksys.
+This is a public version of LDS GPU Booksys.This version is special for web explanation implementation.
 ## Note:GUI Web Explanation
 
 ### Directory Structure
