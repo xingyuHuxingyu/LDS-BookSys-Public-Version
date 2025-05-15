@@ -1,6 +1,6 @@
 # GPU-Book-Monitor-LDS
 This is a public version of LDS GPU Booksys.
-## Web Explanation
+## Note:GUI Web Explanation
 
 ### Directory Structure
 LDS-GPU-BookSys-Template/GPU-Calendar-Monitor-main/web
